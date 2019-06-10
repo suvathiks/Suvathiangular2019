@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .error {
+        color: red;
+    }
+</style>
+<body>
+<div class="form-group">
+    <form role="form">
+        <input type="text" class="form-control" placeholder="Add Todo" #todotask [(ngModel)]="task" name="task" required>
+    </form>&nbsp;
+    <button type="button" class="btn" (click)="addTodoItem(todotask.value)">Add</button>
+    <div class="error">{{message}}</div>
+</div>
+
+
+<table>
+    <div class="container">
+        <div class="todos-data-list" *ngIf=todos.length>
+            <table class="table" >
+                <thead >
+                <tr>
+                    <th>Todo Status</th>
+                    <th>Task</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let policy of todos; index as i" >
+                    <td><div class="checkbox"><label><input type="checkbox" [disabled]="policy.isdisabled" [(ngModel)]="policy.isChecked" (click)="taskComplete(policy.id,i,policy.status, $event)" ></label></div></td>
+                    <td *ngIf="false">{{policy.id}}</td>
+                    <td>
+                        <div>
+                            <span *ngIf="!policy.isEdit" (click)="enableTodoitem(policy.id,i,policy.status)" >{{policy.name}}</span>
+                            <input *ngIf="policy.isEdit" class="form-control" [disabled]="policy.isdisabled" [(ngModel)]="policy.name" type="text" (change)="updateTodoItem(policy.name,i)" >
+                        </div></td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <button class="btn">
+                                        <i class="fa fa-trash" (click)="removeTodoItem(policy)" >
+                                        </i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</table>
+
+</body>
