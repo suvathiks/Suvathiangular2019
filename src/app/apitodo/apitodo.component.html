@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+
+<body>
+
+<div class="form-group">
+
+    <form role="form">
+        <input type="text" class="form-control" placeholder="Add Todo" #todotask [(ngModel)]="task" name="task"
+               required>
+    </form>&nbsp;
+
+    <button type="button" class="btn" (click)="addTodoItemApi(todotask.value)">Add</button>
+
+    <div class="error">{{message}}</div>
+
+    <div class="todos-data-list" *ngIf=todos.length>
+
+        <table>
+            <div class="container">
+                <div class="todos-data-list" *ngIf=todos.length>
+                    <table class="table" >
+                        <thead >
+                        <tr>
+                            <th>Todo Status</th>
+                            <th>Task</th>
+                            <th class="act">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+            <tr *ngFor='let todo of todos; index as i'>
+                <td >
+                    <!-- <input type="checkbox" [(ngModel)]="todo.isChecked" checked="{{todo.isChecked ? 'checked' : '' }}" /> -->
+                    <input type="checkbox" [(ngModel)]="todo.completed" checked="{{todo.completed ? 'checked' : '' }}"
+                           (change)="updateTodoApi(todo._id, todo.title, todo.__v,todo.completed) "/>
+                </td>
+                <td>
+                    <div>
+                        <span *ngIf="!todo.isEdit" (click)="enableEditApi(todo)" >{{todo.title}}</span>
+                        <input *ngIf="todo.isEdit" class="form-control"  [(ngModel)]="todo.title" type="text" (change)="updateTodoApi(todo._id, todo.title, todo.__v)" >
+                    </div></td>
+                <td>
+
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+                                <button class="btn">
+                                    <i class="fa fa-trash" (click)="removeMessage(todo, i)" >
+                                    </i>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+</div>

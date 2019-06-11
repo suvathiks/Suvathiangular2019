@@ -7,20 +7,25 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TodoComponent } from './todo/todo.component';
+import { ApitodoComponent } from './apitodo/apitodo.component';
+import {ApitodoService} from "./apitodo/apitodo.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    TodoComponent
+    TodoComponent,
+    ApitodoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ ApitodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
