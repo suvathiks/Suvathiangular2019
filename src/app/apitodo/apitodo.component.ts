@@ -81,7 +81,7 @@ export class ApitodoComponent implements OnInit {
             this.errorMsg = '';
             this.enableCheckMsg = '';
         } else {
-            this.errorMsg = "String should not be EMPTY";
+            this.errorMsg = "Make sure todo is not empty";
             this.isErrorMessageClosed = true;
         }
     }
