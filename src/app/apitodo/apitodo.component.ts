@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApitodoService} from './apitodo.service';
 import {TodoType} from "../todo/todo.component";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
     selector: 'app-apitodo',
@@ -14,7 +15,7 @@ export class ApitodoComponent implements OnInit {
     enableCheckMsg: String;
     isErrorMessageClosed: boolean;
 
-    constructor(private apiTodoService: ApitodoService) {
+    constructor(private apiTodoService: ApitodoService, private spinner: NgxSpinnerService) {
         this.todos = [];
         this.errorMsg = '';
         this.isErrorMessageClosed = false;
@@ -22,14 +23,16 @@ export class ApitodoComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.spinner.show();
         this.getTodos();
     }
 
     public getTodos() {
-
+        this.spinner.show();
         this.apiTodoService.getTodos().subscribe((data) => {
             this.todos = data.todos;
         });
+        this.spinner.hide();
     }
 
     addTodo(value) {

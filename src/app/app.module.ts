@@ -10,6 +10,7 @@ import { TodoComponent } from './todo/todo.component';
 import { ApitodoComponent } from './apitodo/apitodo.component';
 import {ApitodoService} from "./apitodo/apitodo.service";
 import {HttpClientModule} from "@angular/common/http";
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [ ApitodoService],
   bootstrap: [AppComponent]
