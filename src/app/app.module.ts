@@ -11,6 +11,7 @@ import { ApitodoComponent } from './apitodo/apitodo.component';
 import {ApitodoService} from "./apitodo/apitodo.service";
 import {HttpClientModule} from "@angular/common/http";
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { StopwatchComponent } from './stopwatch/stopwatch.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HomeComponent,
     AboutComponent,
     TodoComponent,
-    ApitodoComponent
+    ApitodoComponent,
+    StopwatchComponent
   ],
   imports: [
     BrowserModule,

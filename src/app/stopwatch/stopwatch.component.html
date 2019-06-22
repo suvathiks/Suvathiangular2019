@@ -1,0 +1,22 @@
+<div class="container">
+    <section class="timer-counter-label">
+        <div *ngIf="time; else elseBlock" class="rcorners1">
+            <img *ngIf="light" src="http://www.clker.com/cliparts/8/N/5/3/N/K/dark-red-led-circle-md.png"
+                 style="width:50px;">
+            <img *ngIf="!light" src="http://www.bgfconlineshop.com/ticket/images/admin/LED.gif"
+                 style="width:50px;"> {{formattedHour()}}:{{formattedMinute()}}:{{formattedSecond()}}
+
+        </div>
+        <ng-template #elseBlock>
+            <div class="rcorners1">
+                <img src="http://www.clker.com/cliparts/1/5/4/b/11949892282132520602led_circle_green.svg.med.png"
+                     style="width:50px;"> {{formattedHour()}}:{{formattedMinute()}}:{{formattedSecond()}}</div>
+        </ng-template>
+    </section>
+    <section class="timer-button-container">
+        <button class="timer-button" (click)="startTimer()">
+            {{ startText }}
+        </button>
+        <button class="timer-button" [disabled]="!light" (click)="clearTimer()">Reset</button>
+    </section>
+</div>
