@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
     "angular-flipclock": "^1.0.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "flipclock": "^0.10.8",
     "moment": "^2.24.0",
     "ngx-spinner": "^7.1.4",
